@@ -15,7 +15,8 @@ city_coordinates = {
 }
 
 def capture_radar(city, duration):
-    lat, lng = city_coordinates.get(city, city)
+    coords = city_coordinates.get(city)
+    lat, lng = coords['lat'], coords['lng']
     url = f'https://www.theweathernetwork.com/en/maps/radar?lat={lat}&lng={lng}'
 
     # setup webdriver
@@ -38,6 +39,22 @@ def capture_radar(city, duration):
     except:
         pass
 
+    # Hide unwanted elements
+    elements_to_hide = ['responsive-header-bar', 'div-gpt-ad-topbanner-short']
+    for element in elements_to_hide:
+        try:
+            unwanted_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, f'[data-testid="{element}"]')))
+            driver.execute_script("arguments[0].style.visibility='hidden'", unwanted_element)
+        except:
+            pass
+
+    # Toggle fullscreen
+    try:
+        full_screen_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[title="Toggle Full Screen"]')))
+        full_screen_button.click()
+    except:
+        pass
+
     # Wait for the play/pause button to load
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="play-pause-button"]')))
 
@@ -57,6 +74,7 @@ def capture_radar(city, duration):
 
     # Close the browser
     driver.quit()
+
 
 
 if __name__ == "__main__":
