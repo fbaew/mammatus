@@ -41,7 +41,7 @@ def capture_radar(city, duration, zoom):
 
     # setup webdriver
     options = Options()
-#    options.add_argument("--headless")
+    options.add_argument("--headless=new")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--log-level=3")  # This will suppress all messages except fatal errors
 
