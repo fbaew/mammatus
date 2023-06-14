@@ -1,3 +1,5 @@
 *.pyc
 *.gif
 **/__pycache__
+.env
+.wenv
