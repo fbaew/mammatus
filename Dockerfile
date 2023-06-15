@@ -10,6 +10,11 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
+# Install nginx and curl
+RUN apt-get update && apt-get install -y nginx curl
+
+# Copy the nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
 # Install Chrome and chromedriver
 RUN apt-get update && apt-get install -y wget gnupg2
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -18,12 +23,6 @@ RUN apt-get update && apt-get install -y google-chrome-stable
 RUN wget -N https://chromedriver.storage.googleapis.com/$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip -P /tmp/
 RUN unzip /tmp/chromedriver_linux64.zip -d /usr/bin/
 RUN chmod +x /usr/bin/chromedriver
-
-# Install nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Copy the nginx configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the cron job file
 COPY cron /etc/cron.d/cron
