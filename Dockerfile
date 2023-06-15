@@ -17,12 +17,14 @@ RUN apt-get update && apt-get install -y nginx curl unzip
 COPY nginx.conf /etc/nginx/nginx.conf
 # Install Chrome and chromedriver
 RUN apt-get update && apt-get install -y wget gnupg2
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-RUN apt-get update && apt-get install -y google-chrome-stable
+
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb
+
 RUN wget -N https://chromedriver.storage.googleapis.com/$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip -P /tmp/
 RUN unzip /tmp/chromedriver_linux64.zip -d /usr/bin/
 RUN chmod +x /usr/bin/chromedriver
+
 
 # Copy the cron job file
 COPY cron /etc/cron.d/cron
