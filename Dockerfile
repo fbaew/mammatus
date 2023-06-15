@@ -10,8 +10,8 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Install nginx and curl
-RUN apt-get update && apt-get install -y nginx curl
+# Install nginx and curl and unzip
+RUN apt-get update && apt-get install -y nginx curl unzip
 
 # Copy the nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
