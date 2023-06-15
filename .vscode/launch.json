@@ -1,0 +1,118 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=815387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Weather Radar: Calgary",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "0",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Calgary Up Close",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "3",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+        {
+            "name": "Weather Radar: Vancouver",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Vancouver",
+                "-f", "15",
+                "-z", "3",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+        {
+            "name": "Weather Radar: Revelstoke",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Revelstoke",
+                "-f", "15",
+                "-z", "1",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Alberta",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "20",
+                "-z", "-1",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Revelstoke at Large",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Revelstoke",
+                "-f", "15",
+                "-z", "0",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+    "name": "Europe",
+    "type": "python",
+    "request": "launch",
+    "program": "main.py",
+    "args": [
+        "London, England",
+        "-f", "15",
+        "-z", "-1",
+    ],
+    "console": "integratedTerminal",
+    "justMyCode": true
+},
+{
+            "name": "Python: Flask Server",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "webui.py",
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true
+        }
+
+    ]
+}

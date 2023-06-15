@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .image {
+            display: inline-block;
+            width: 30%;
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .caption {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+    <title>Radar Images</title>
+</head>
+<body>
+{% for image in images %}
+    <h2>{{ image.city }}</h2>
+    <div class="image">
+        <a href="{{ image.full_url }}" target="_blank">
+            <img src="{{ image.scaled_url }}" alt="{{ image.city }} radar">
+        </a>
+        <div class="caption">{{ image.city }} (Zoom {{ image.zoom }})</div>
+    </div>
+{% endfor %}
+</body>
+</html>
