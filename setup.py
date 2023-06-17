@@ -9,6 +9,7 @@ conn.execute('''CREATE TABLE IF NOT EXISTS radar_images
              city TEXT NOT NULL,
              zoom INTEGER NOT NULL,
              filename TEXT NOT NULL,
+             source TEXT NOT NULL,
              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
 
 # Commit the changes and close the connection
