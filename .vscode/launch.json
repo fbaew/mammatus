@@ -18,6 +18,65 @@
             "justMyCode": true
         },
         {
+            "name": "Weather Radar: Calgary (Windy Satellite)",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "0",
+                "--source", "windy",
+                "--mode", "satellite",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Calgary (Windy Satellite) - Zoom 3",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "3",
+                "--source", "windy",
+                "--mode", "satellite",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Calgary (Windy Radar)",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "3",
+                "--source", "windy",
+                "--mode", "radar",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Weather Radar: Calgary (Windy Default)",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "Calgary",
+                "-f", "15",
+                "-z", "3",
+                "--source", "windy",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Weather Radar: Calgary Up Close",
             "type": "python",
             "request": "launch",

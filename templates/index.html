@@ -19,7 +19,7 @@
             margin-top: 5px;
         }
     </style>
-    <title>Radar Images</title>
+    <title>Radar Dashboard</title>
 </head>
 <body>
 {% for image in images %}
@@ -28,7 +28,7 @@
         <a href="{{ image.full_url }}" target="_blank">
             <img src="{{ image.scaled_url }}" alt="{{ image.city }} radar">
         </a>
-        <div class="caption">{{ image.city }} (Zoom {{ image.zoom }})</div>
+        <div class="caption">{{image.source}}: {{ image.city }} (Zoom {{ image.zoom }})</div>
     </div>
 {% endfor %}
 </body>

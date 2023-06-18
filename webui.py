@@ -8,8 +8,8 @@ app = Flask(__name__)
 def index():
     # Get the list of images from the database
     conn = sqlite3.connect('radar_images.db')
-    cursor = conn.execute('SELECT city, zoom, filename FROM radar_images WHERE (city, zoom, created_at) IN (SELECT city, zoom, MAX(created_at) FROM radar_images GROUP BY city, zoom) ORDER BY city, zoom')
-    images = [{'city': row[0], 'zoom': row[1], 'filename': row[2]} for row in cursor.fetchall()]
+    cursor = conn.execute('SELECT city, zoom, filename, source FROM radar_images WHERE (city, zoom, created_at) IN (SELECT city, zoom, MAX(created_at) FROM radar_images GROUP BY city, zoom, source) ORDER BY city, zoom')
+    images = [{'city': row[0], 'zoom': row[1], 'filename': row[2], 'source': row[3]} for row in cursor.fetchall()]
     conn.close()
 
     # Generate URLs for the scaled images and full-size images
