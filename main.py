@@ -7,6 +7,7 @@ import os
 import time
 import requests
 import imageio
+import numpy as np
 
 from multiprocessing import Process, Queue
 from PIL import Image, ImageSequence
@@ -84,7 +85,9 @@ class RadarFetcher:
 
         # Take screenshots every 1 second for the duration
         for idx, _ in enumerate(range(self.frames)):
-            print(f'Collecting screenshot {idx+1}/{self.frames}')
+            # Get time in HH:MM:SS (millisecond) format
+            time_string = datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]
+            print(f'[{time_string}] Collecting screenshot {idx+1}/{self.frames}')
             image = weather_provider.capture_frame()
             self.images.append(image)
 
@@ -106,27 +109,31 @@ class RadarFetcher:
         # Add the directory to the filename
         output_filename = os.path.join('outputs', self.output)
 
-        imageio.mimsave(output_filename, self.images)
+        # Load the images and downsample them to a smaller color palette
+        images = [Image.fromarray(img) for img in self.images]
+
+        # Write the GIF to memory
+        with imageio.get_writer(output_filename, mode='I') as writer:
+            for img in images:
+                try:
+                    writer.append_data(np.asarray(img))
+                except Exception as e:
+                    print('Something hinky')
 
         # Create a scaled-down version of the GIF
-        self.write_small_gif(output_filename)
+        self.write_small_gif(images, output_filename)
 
-    def write_small_gif(self, filename):
-        # Load the original GIF
-        with Image.open(filename) as im:
-            size = im.size
-            duration = im.info['duration']
-            frames = [frame.copy() for frame in ImageSequence.Iterator(im)]
+    def write_small_gif(self, images, filename):
+        size = images[0].size
 
         # Scale down the GIF
         scale = 0.1
         new_size = (int(size[0] * scale), int(size[1] * scale))
-        new_frames = [frame.resize(new_size) for frame in frames]
+        new_frames = [img.resize(new_size) for img in images]
 
-        # Save the scaled-down GIF
+        # Save the scaled-down GIF to disk
         new_filename = os.path.splitext(filename)[0] + '_scaled.gif'
-        new_frames[0].save(new_filename, save_all=True, append_images=new_frames[1:], duration=duration, loop=0)
-
+        new_frames[0].save(new_filename, save_all=True, append_images=new_frames[1:], duration=len(images), loop=0)
 
 class DatabaseManager:
     def __init__(self, db_path):

@@ -18,10 +18,26 @@
             "justMyCode": true
         },
         {
+            "name": "Weather Radar: Calgary (Windy Satellite; Debug)",
+            "type": "python",
+            "program": "main.py",
+            "request": "launch",
+            "args": [
+                "Calgary",
+                "-f", "14",
+                "-z", "-1",
+                "--source", "windy",
+                "--mode", "satellite",
+                "--debug"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Weather Radar: Calgary (Windy Satellite)",
             "type": "python",
-            "request": "launch",
-            "program": "main.py",
+            "program": "main.py"
+           ,
             "args": [
                 "Calgary",
                 "-f", "15",
@@ -33,14 +49,14 @@
             "justMyCode": true
         },
         {
-            "name": "Weather Radar: Calgary (Windy Satellite) - Zoom 3",
+            "name": "Weather Radar: Calgary (Windy Satellite) - Zoom 6",
             "type": "python",
             "request": "launch",
             "program": "main.py",
             "args": [
                 "Calgary",
                 "-f", "15",
-                "-z", "3",
+                "-z", "6",
                 "--source", "windy",
                 "--mode", "satellite",
             ],
@@ -54,7 +70,7 @@
             "program": "main.py",
             "args": [
                 "Calgary",
-                "-f", "15",
+                "-f", "30",
                 "-z", "3",
                 "--source", "windy",
                 "--mode", "radar",

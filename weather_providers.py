@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from imageio.core.util import asarray
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
-from imageio.core.util import asarray
 import imageio
 import time
 
