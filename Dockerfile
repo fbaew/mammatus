@@ -1,3 +1,6 @@
+# This doesn't actually work right now because we can't run chrome in the
+# container. Surely user error but for now, no docker support.
+
 FROM python:3.10
 
 # Install Chrome and chromedriver
