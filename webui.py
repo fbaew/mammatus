@@ -29,4 +29,4 @@ def get_scaled_filename(filename):
     return os.path.splitext(filename)[0] + '_scaled.gif'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8080)
