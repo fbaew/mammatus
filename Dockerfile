@@ -9,8 +9,15 @@ RUN wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE
 RUN wget https://chromedriver.storage.googleapis.com/$(cat LATEST_RELEASE)/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip && mv chromedriver /usr/local/bin/
 
-# Set the working directory
+# Create a new user to run the webui
+RUN useradd -ms /bin/bash webuiuser
+
+# Set the working directory and change ownership to the new user
 WORKDIR /app
+RUN chown -R webuiuser:webuiuser /app
+
+# Switch to the new user
+USER webuiuser
 
 # Copy the requirements file and install the dependencies
 COPY requirements.txt .
