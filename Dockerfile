@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y wget gnupg
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN apt-get update && apt-get install -y google-chrome-stable
-RUN wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
+RUN wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+RUN wget https://chromedriver.storage.googleapis.com/$(cat LATEST_RELEASE)/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip && mv chromedriver /usr/local/bin/
 
 # Set the working directory
