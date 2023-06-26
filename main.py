@@ -56,6 +56,8 @@ class RadarFetcher:
         options = Options()
         if not self.debug:
             options.add_argument("--headless=new")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--no-sandbox")
         options.add_argument("--window-size=1920,1080")
         options.add_argument("--log-level=3")  # This will suppress all messages except fatal errors
 
