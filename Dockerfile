@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Expose port 8081 for the webui
-EXPOSE 8081
+EXPOSE 8080
 
 # Run the script
 CMD ["python", "webui.py"]

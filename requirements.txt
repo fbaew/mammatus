@@ -2,3 +2,4 @@ selenium==4.9.1
 imageio==2.9.0
 argparse==1.4.0
 requests==2.31.0
+flask==2.3.2
